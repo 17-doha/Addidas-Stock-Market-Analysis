@@ -59,27 +59,3 @@ Dashboard Details
 
 ![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/a48d681e-2692-4b14-a1aa-7a22c298a8b0)
 
-
-
-
-
-    
-
-
-
-
-Sub-heading
------------
-
-Text attributes _italic_, **bold**, `monospace`.
-
-Horizontal rule:
-
----
-
-  1. fruits
-     * apple
-     * banana
-  2. vegetables
-     - carrot
-     - broccoli
