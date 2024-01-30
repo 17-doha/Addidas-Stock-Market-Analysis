@@ -33,20 +33,22 @@ Who is our greatest retailer in all regions?
 
 
 **The Most Popular Sales Method in Each Region** 
-    * Our main 3 windows for sales are In-store, Online, and Outlet in which region do we need to increase our branches?  
-    * In which region do we need to increase our online services?  
+ * Our main 3 windows for sales are In-store, Online, and Outlet in which region do we need to increase our branches?  
+ * In which region do we need to increase our online services?  
 
 ![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/ccde8a0c-d189-4c6a-8c48-307e81bdc5e4)  
 
 
 **Profit of Each Retailer for Each Sales Method**  
   * Which retailers provide us with the highest profit?  
-  * Who is the top retailer relative to the profit in each sales method?  
+  * Who is the top retailer relative to the profit in each sales method?
+     
 ![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/b63a7151-2fba-4398-95c6-06701f486f84)
 
 **Total Sales in Each Region in US** 
   * In which state can we increase our branches? In other words in which states do we make the highest sales?  
   * In which state do we make the most profit?
+    
 ![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/1bfbffd1-9a28-4131-8bab-f937f1f57a89)
 
 
