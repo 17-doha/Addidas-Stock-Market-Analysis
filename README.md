@@ -9,7 +9,7 @@ This dashboard is addressed to answer some main questions to take important deci
 
 **Provider:** Addidas Multinational Company  
 
-**Input_Data:** Retailer, Retailer ID, Invoice Date, Region, State, City, Product, Price per Unit, Units Sold, Total Sales, Operating Profit, Operating Margin, Sales Method  
+**Input** **Data:** Retailer, Retailer ID, Invoice Date, Region, State, City, Product, Price per Unit, Units Sold, Total Sales, Operating Profit, Operating Margin, Sales Method  
 
 **Questions_Answered_By_This_Dashboard:**  
      * Our main 3 windows for sales are In-store, Online, and Outlet in which region do we need to increase our branches?  
