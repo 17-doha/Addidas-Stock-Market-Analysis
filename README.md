@@ -1,5 +1,6 @@
-Heading
+Name
 =======
+Addidas Stock Market Dashboard
 
 Sub-heading
 -----------
