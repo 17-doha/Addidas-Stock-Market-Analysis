@@ -2,7 +2,6 @@ Name
 =======
 **Addidas Stock Market Dashboard**
 
-
 Description
 =======
 This dashboard is addressed to answer some main questions to take important decisions related to the dataset provided by Addidas.  
@@ -21,6 +20,19 @@ This dashboard is addressed to answer some main questions to take important deci
      * Which retailers provide us with the highest profit?  
      * Who is the top retailer relative to the profit in each sales method?  
      
+
+Visuals
+=======
+**All Retailers of Addidas**  
+ 
+**The Most Popular Sales Method in Each Region**  
+ 
+**All Retailers of Addidas**  
+ 
+**All Retailers of Addidas**  
+
+**All Retailers of Addidas**  
+
 
 
 Sub-heading
