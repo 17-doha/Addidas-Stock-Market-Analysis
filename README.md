@@ -19,10 +19,14 @@ This dashboard is addressed to answer some main questions to take important deci
      * Who is our greatest retailer?  
      * Which retailers provide us with the highest profit?  
      * Who is the top retailer relative to the profit in each sales method?  
-     
 
-Visuals
+
+Dashboard Details
 =======
+![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/f9180526-d9ea-44ae-bdd0-ec04368bfb69)
+![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/51dd0fd1-58b9-4300-b395-f14a2f27c2f8)
+
+
 **All Retailers of Addidas**  
  
 **The Most Popular Sales Method in Each Region**  
