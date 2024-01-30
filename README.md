@@ -28,7 +28,8 @@ Dashboard Details
 
 
 **All Retailers of Addidas**  
-Who is our greatest retailer in all regions?  
+ * Who is our greatest retailer in all regions?  
+
 ![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/3a23caca-6b6f-4e25-b23a-ee7e097d5aaa) 
 
 
