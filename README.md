@@ -10,6 +10,15 @@ This dashboard is addressed to answer some main questions to take important deci
 
 **Input** **Data:** Retailer, Retailer ID, Invoice Date, Region, State, City, Product, Price per Unit, Units Sold, Total Sales, Operating Profit, Operating Margin, Sales Method  
 
+**Used Tools:**  
+ * Amcharts 5  
+ * SQL  
+ * JavaScript  
+ * Flask  
+ * Python  
+ * HTML  
+ * CSS
+
 **Questions** **Answered** **By** **This** **Dashboard:**  
  * Our main 3 windows for sales are In-store, Online, and Outlet in which region do we need to increase our branches?  
  * In which region do we need to increase our online services?  
