@@ -59,3 +59,5 @@ Dashboard Details
 
 ![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/a48d681e-2692-4b14-a1aa-7a22c298a8b0)
 
+For the source code contact at --**dohaahemdan@gmail.com**--
+
