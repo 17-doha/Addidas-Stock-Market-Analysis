@@ -71,17 +71,17 @@ function updatenew(data_new)
       }));
       
       heatLegend.startLabel.setAll({
-        fontSize: 12,
+        fontSize: 30,
       
         fill: heatLegend.get("startColor")
       });
       
       heatLegend.endLabel.setAll({
-        fontSize: 12,
+        fontSize: 30,
 
         fill: heatLegend.get("endColor")
       });
-
+      
       
       // change this to template when possible
       polygonSeries.events.on("datavalidated", function () {

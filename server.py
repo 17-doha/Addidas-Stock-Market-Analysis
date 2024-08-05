@@ -21,7 +21,22 @@ db_url = 'sqlite:///demo.db'
 engine = create_engine(db_url, echo=False)
 df_2 = pd.read_sql('select * from Addidas', engine)
 df_3 = pd.read_sql('select [Sales Method], Retailer, [Operating Profit] from Addidas', engine)
+columns = ['Invoice Date', 'Operating Profit']
 
+data = df[columns]
+
+# Convert 'Invoice Date' to datetime
+data['Invoice Date'] = pd.to_datetime(data['Invoice Date'], format='%d/%m/%Y')
+
+# Clean and convert 'Operating Profit' to float
+data['Operating Profit'] = data['Operating Profit'].apply(lambda x: float(x.replace('$', '').replace(',', '').strip()))
+
+# Group by 'Invoice Date' and sum 'Operating Profit'
+grouped_data = data.groupby('Invoice Date')['Operating Profit'].sum().reset_index()
+
+# Convert grouped data to dictionary format
+result = grouped_data.to_dict(orient='records')
+print(result)
 
 app = Flask(__name__)
 
@@ -63,37 +78,19 @@ def get_data():
 '''This is the chart ofr the scatter plot '''
 @app.route('/get-line')
 def get_line():
-    
-        data = []
-        '''the query gets the data and cleans it from the commas and $ and make it int'''
+    columns = ['Invoice Date', 'Operating Profit']
+    data = df[columns]
+    data['Invoice Date'] = pd.to_datetime(data['Invoice Date'], format='%d/%m/%Y')
+    data['Invoice Date'] = data['Invoice Date'].astype('int64') // 10**6
+    data['Operating Profit'] = data['Operating Profit'].apply(lambda x: float(x.replace('$', '').replace(',', '').strip()))
 
-        query_scatter = ''' SELECT
-        REPLACE(REPLACE([Total Sales], '$', ''), ',', '') AS TotalSales,
-        REPLACE(REPLACE([Operating Profit], '$', ''), ',', '') AS OperatingProfit,
-        REPLACE(REPLACE([Units Sold], '$', ''), ',', '') AS UnitsSold,
-        City,
-        Region
-        FROM Addidas;
+    # data.set_index('Date', inplace=True)
+    grouped_data = data.groupby('Invoice Date')['Operating Profit'].sum().reset_index()
 
-        '''
-        query_regions = ''' select distinct Region 
-        from Addidas
-        '''
-        df_scatter = pd.read_sql(query_scatter, engine)
-        df_regions = pd.read_sql(query_regions, engine)
-        data = []
+# Convert grouped data to dictionary format
+    result = grouped_data.to_dict(orient='records')
 
-        colors  = ["#67b7dc", "#9564db", "#c767dc", "#cdd3d9", "#6771dc"]
-        dict_region = {}
-        for region in df_regions['Region']:
-            dict_region[region] = colors[len(dict_region) % len(colors)]
-
-        for i in range(len(df_scatter)):
-        
-            data.append({ "title": df_scatter["City"][i], "color" : dict_region[df_scatter["Region"][i]],  "continent" : df_scatter["Region"][i],  "x": int(df_scatter["TotalSales"][i]), "y": int(df_scatter["OperatingProfit"][i]), "value": int(df_scatter["UnitsSold"][i])})
-
-
-        return jsonify(data)
+    return jsonify(result)
 # '''This is the chart ofr the scatter plot '''
 # @app.route('/get-scatter')
 # def get_scatter():

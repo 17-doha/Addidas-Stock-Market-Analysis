@@ -73,7 +73,7 @@ function updateProfit(data_profit)
         yRenderer.labels.template.setAll({
           
           fill: am5.color("#000000"),
-          fontSize: "1.5em"
+          fontSize: 30
 
     
         });
@@ -93,9 +93,9 @@ function updateProfit(data_profit)
         xRenderer.labels.template.setAll({
           
           fill: am5.color("#000000"),
-          fontSize: "1.2em"
-    
+          fontSize: 20
         });
+    
         
         // Add legend
         // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
@@ -103,6 +103,12 @@ function updateProfit(data_profit)
           centerX: am5.p50,
           x: am5.p50
         }));
+        legend.labels.template.setAll({ 
+          
+          fontSize: 30,
+          fill: am5.color("#000000") 
+  
+        });
         
         
         // Add series

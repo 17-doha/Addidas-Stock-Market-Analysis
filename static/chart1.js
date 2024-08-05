@@ -87,14 +87,14 @@ function updateChart(data)
     xRenderer.labels.template.setAll({
         
       fill: am5.color("#000000"),
-      fontSize: "1.5em"
+      fontSize: 30
 
     });
     let yRenderer = yAxis.get("renderer");
     yRenderer.labels.template.setAll({
         
       fill: am5.color("#000000"),
-      fontSize: "1.5em"
+      fontSize: 30
 
     });
     
@@ -115,6 +115,13 @@ function updateChart(data)
         width: am5.percent(90),
         tooltipY: 0,
         strokeOpacity: 0
+      });
+      legend.labels.template.setAll({ 
+        maxWidth: 1500,
+        width: 400,
+        fontSize: 30,
+        fill: am5.color("#000000") 
+
       });
     
       series.data.setAll(data);

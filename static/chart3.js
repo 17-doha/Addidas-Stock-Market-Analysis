@@ -77,12 +77,16 @@ function updatePie(data_pie)
         layout: root.verticalLayout
       }));
       // set value labels align to right
-      legend.valueLabels.template.setAll({ textAlign: "right", fill: am5.color("#000000")  })
+      legend.valueLabels.template.setAll({ 
+        textAlign: "right",
+         fill: am5.color("#000000"),
+         fontSize: 30
+         })
       // set width and max width of labels
       legend.labels.template.setAll({ 
-        maxWidth: 140,
-        width: 140,
-        oversizedBehavior: "wrap",
+        maxWidth: 1500,
+        width: 400,
+        fontSize: 30,
         fill: am5.color("#000000") 
 
       });
