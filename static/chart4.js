@@ -97,7 +97,7 @@ function updatenew(data_new)
       //   centerX: am5.percent(50),
       //   paddingTop: 0,
       //   paddingBottom: 0,
-      //   fill: am5.color("#ffffff") 
+      //   fill: am5.color("#000000") 
       // });
   
   

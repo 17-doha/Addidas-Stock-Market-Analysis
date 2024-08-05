@@ -72,7 +72,7 @@ function updateChart(data)
     
     xRenderer.grid.template.setAll({
       location: 1,
-      fill: am5.color("#ffffff"),
+      fill: am5.color("#000000"),
       fontSize: "1.5em"
     })
     
@@ -86,14 +86,14 @@ function updateChart(data)
     
     xRenderer.labels.template.setAll({
         
-      fill: am5.color("#ffffff"),
+      fill: am5.color("#000000"),
       fontSize: "1.5em"
 
     });
     let yRenderer = yAxis.get("renderer");
     yRenderer.labels.template.setAll({
         
-      fill: am5.color("#ffffff"),
+      fill: am5.color("#000000"),
       fontSize: "1.5em"
 
     });
@@ -156,13 +156,13 @@ function updateChart(data)
       centerY: am5.percent(26),
 
       fontFamily: "Courier New, Courier, monospace",
-      fill: am5.color("#ffffff") 
+      fill: am5.color("#000000") 
     });
 
     titleLabel.set("y", 0);
     chart.children.unshift(titleLabel);
     
-    legend.labels.template.set("fill", am5.color("#ffffff"));
+    legend.labels.template.set("fill", am5.color("#000000"));
     // Make stuff animate on load
     // https://www.amcharts.com/docs/v5/concepts/animations/
     chart.appear(1000, 100);

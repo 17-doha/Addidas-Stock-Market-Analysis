@@ -72,7 +72,7 @@ function updateProfit(data_profit)
         })
         yRenderer.labels.template.setAll({
           
-          fill: am5.color("#ffffff"),
+          fill: am5.color("#000000"),
           fontSize: "1.5em"
 
     
@@ -92,7 +92,7 @@ function updateProfit(data_profit)
         let xRenderer = xAxis.get("renderer");
         xRenderer.labels.template.setAll({
           
-          fill: am5.color("#ffffff"),
+          fill: am5.color("#000000"),
           fontSize: "1.2em"
     
         });
@@ -149,7 +149,7 @@ function updateProfit(data_profit)
       makeSeries("Midwest", "Midwest");
       makeSeries("Southeast", "Southeast");
         
-      legend.labels.template.set("fill", am5.color("#ffffff"));
+      legend.labels.template.set("fill", am5.color("#000000"));
       var titleLabel = am5.Label.new(root, {
         text: "The Highest Profit Sales Method in Each Region",
         fontSize: 30,
@@ -160,7 +160,7 @@ function updateProfit(data_profit)
         centerY: am5.percent(15),
   
         fontFamily: "Courier New, Courier, monospace",
-        fill: am5.color("#ffffff") 
+        fill: am5.color("#000000") 
       });
   
       titleLabel.set("y", 0);

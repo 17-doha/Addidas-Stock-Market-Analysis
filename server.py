@@ -60,10 +60,9 @@ def get_data():
              data[j][df_5["Retailer"][i]] = int(df_5["Summ"][i])   
     return jsonify(data)
 
-
 '''This is the chart ofr the scatter plot '''
-@app.route('/get-scatter')
-def get_scatter():
+@app.route('/get-line')
+def get_line():
     
         data = []
         '''the query gets the data and cleans it from the commas and $ and make it int'''
@@ -95,6 +94,40 @@ def get_scatter():
 
 
         return jsonify(data)
+# '''This is the chart ofr the scatter plot '''
+# @app.route('/get-scatter')
+# def get_scatter():
+    
+#         data = []
+#         '''the query gets the data and cleans it from the commas and $ and make it int'''
+
+#         query_scatter = ''' SELECT
+#         REPLACE(REPLACE([Total Sales], '$', ''), ',', '') AS TotalSales,
+#         REPLACE(REPLACE([Operating Profit], '$', ''), ',', '') AS OperatingProfit,
+#         REPLACE(REPLACE([Units Sold], '$', ''), ',', '') AS UnitsSold,
+#         City,
+#         Region
+#         FROM Addidas;
+
+#         '''
+#         query_regions = ''' select distinct Region 
+#         from Addidas
+#         '''
+#         df_scatter = pd.read_sql(query_scatter, engine)
+#         df_regions = pd.read_sql(query_regions, engine)
+#         data = []
+
+#         colors  = ["#67b7dc", "#9564db", "#c767dc", "#cdd3d9", "#6771dc"]
+#         dict_region = {}
+#         for region in df_regions['Region']:
+#             dict_region[region] = colors[len(dict_region) % len(colors)]
+
+#         for i in range(len(df_scatter)):
+        
+#             data.append({ "title": df_scatter["City"][i], "color" : dict_region[df_scatter["Region"][i]],  "continent" : df_scatter["Region"][i],  "x": int(df_scatter["TotalSales"][i]), "y": int(df_scatter["OperatingProfit"][i]), "value": int(df_scatter["UnitsSold"][i])})
+
+
+#         return jsonify(data)
 
 '''Pie Chart "Dounut" To get which retailer give me the most products? '''
 @app.route('/get-pie')

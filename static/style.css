@@ -4,7 +4,7 @@ body {
     align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
-    background-color: #072140;
+    background-color: #ffffff;
     /* background-color: #1e3551; */
     align-items: flex-start;
      
@@ -13,7 +13,7 @@ body {
  h1 {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     font-size:60px;
  }
  
@@ -85,7 +85,7 @@ body {
   
     font-size: 30px;
     
-    color: aliceblue; /* Adjust the color to your preference */
+    color: rgb(0, 0, 0); /* Adjust the color to your preference */
 }
 
 #chart-title-2 {
@@ -97,6 +97,6 @@ body {
   
     font-size: 30px;
     
-    color: aliceblue; /* Adjust the color to your preference */
+    color: rgb(0, 0, 0); /* Adjust the color to your preference */
 }
 
