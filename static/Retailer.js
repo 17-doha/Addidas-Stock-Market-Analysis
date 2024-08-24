@@ -1,26 +1,26 @@
 //This function rtrieve the data from a point and parsed as json file
-function fetchDataAndUpdateChart()
+function fetchDataAndUpdateRetailer()
 {
-    fetch('/get-data')
+    fetch('get-retailer')
     .then(response => response.json())
     .then(data => {
-        updateChart(data);
+        updateRetailer(data);
     })
     .catch(error => console.error('Error:', error));
 }
 
 
 //updates a chart with the recieved data
-function updateChart(data)
+function updateRetailer(data)
 {
-
   console.log(data);
+
   am5.ready(function() {
 
 
     // Create root element
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-    var root = am5.Root.new("chartdiv");
+    var root = am5.Root.new("Retailerdiv");
     
     
     // Set themes
@@ -64,7 +64,7 @@ function updateChart(data)
     
     
     var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-      categoryField: "Method",
+      categoryField: "year",
       renderer: xRenderer,
       fontSize: "1.5em",
       tooltip: am5.Tooltip.new(root, {})
@@ -75,6 +75,7 @@ function updateChart(data)
       fill: am5.color("#000000"),
       fontSize: "1.5em"
     })
+    
     
     xAxis.data.setAll(data);
     
@@ -107,7 +108,7 @@ function updateChart(data)
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: fieldName,
-        categoryXField: "Method"
+        categoryXField: "year"
       }));
     
       series.columns.template.setAll({
@@ -154,12 +155,12 @@ function updateChart(data)
     makeSeries("Kohl's", "Kohl's");
     makeSeries("Amazon", "Amazon");
     var titleLabel = am5.Label.new(root, {
-      text: "Profit of Each Retailer for Each Sales Method",
+      text: "Sales of Each Retailer in Each Year",
       fontSize: 50,
       fontWeight: "500",
       marginBottom: 100,
       
-      centerX: am5.percent(-55),
+      centerX: am5.percent(-70),
       centerY: am5.percent(-95),
 
       fontFamily: "Arial, Helvetica, sans-serif",
@@ -179,7 +180,7 @@ function updateChart(data)
     
 }
 document.addEventListener('DOMContentLoaded', function() {
-    fetchDataAndUpdateChart();
+    fetchDataAndUpdateRetailer();
 });  
 //This function retrieves the data from a point and parses it as a JSON file
 

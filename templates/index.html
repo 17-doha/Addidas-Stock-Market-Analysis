@@ -11,42 +11,107 @@
     <script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
 
     <script src="/static/chart1.js" defer></script>
+    <script src="/static/chart2.js" defer></script>
     <script src="/static/chart6.js" defer></script>
     <script src="/static/chart3.js" defer></script>
     <script src="/static/chart4.js" defer></script>
     <script src="/static/chart5.js" defer></script>
+    <script src="/static/Retailer.js" defer></script>
 
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
     <title>Dashboard</title>
-    
+
 </head>
 <body>
-    <h1>Addidas Stock Market Dashboard</h1>
+    <nav>
+        <div class="image-container">
+        <img src="static/adidas.png" alt="Adidas Logo" style="width: 300px; height: auto;">
+        </div>
+        <h1>Adidas US Stock Market Analysis in 2020-2021</h1>
+        <ul>
+            <li onclick="showPage('page1')"><i class="fas fa-box"></i> Products Dashboard</li>
+<li onclick="showPage('page3')"><i class="fas fa-chart-line"></i> Profit Dashboard</li>
+<li onclick="showPage('page2')"><i class="fas fa-store"></i> Retailers Dashboard</li>
+<li onclick="showPage('page4')"><i class="fas fa-dollar-sign"></i> Sales Dashboard</li>
+
+        </ul>
+    </nav>
     
+    <div id="content">
+        <div id="page1" class="page active">
+            <h2>Sales by Products</h2>
+            <div id="chart-title-4">Top Product for Each Retailer</div>
+            
+            <!-- Container for boxes and chart -->
+            <div id="container">
+                <!-- New container for the colored boxes -->
+                <div id="box-container">
+                    <div id="box1" class="box" style="background-color: #845ec2;">Loading...</div>
+                    <div id = "box2" class="box" style="background-color: #3b91d4;">Loading...</div>
+                    <div id = "box3" class="box" style="background-color: #66b4d9;">Loading...</div>
+                   
+                </div>
+                <!-- Existing container for the chart -->
+                <div id="productdiv"></div>
+            </div>
+        </div>
+        
+        <div id="page2" class="page">
+            <div id="chart-title">Retailers of Adidas US</div>
+            <div id="piediv"></div>
+            <div id ="Retailerdiv"></div>
+        </div>
+
+        <div id="page3" class="page">
+            <div id="chartdiv"></div>
+            <div id="chart-title-3">Operating Profit Across Time</div>
+            <div id="scatterdiv"></div>
+            
+        </div>
+
+        <div id="page4" class="page">
+            <div id="chart-title-2">Total Sales in Each State</div>
+            <div id="newdiv"></div>
+            <div id="profitdiv"></div>
+        </div>
+    </div>
     
-    <div id="piediv"></div>
-    <div id="chart-title">All Retailers of Addidas</div>
-    <div id="profitdiv"></div>
-    <div id="chartdiv"></div>
-    <div id="chart-title-2">Total Sales in Each State</div>
-    <div id="newdiv"></div>
-    <div id="scatterdiv"></div>
-    
-    
-    
-    
-    
-    
-    
-    
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        async function updateBox1() {
+            const response = await fetch('/get-total-sales');
+            const data = await response.json();
+            const box1 = document.getElementById('box1');
+            box1.textContent = `Total Sales: $${data.total_sales}K`; // Display in thousands
+        }
+        async function updateBox2() {
+            const response = await fetch('/get-operating-profit');
+            const data = await response.json();
+            const box2 = document.getElementById('box2');
+            box2.textContent = `Total Profit: $${data.operating_profit}K`; // Display in thousands
+        }
+        async function updateBox3() {
+            const response = await fetch('/get-units-sold');
+            const data = await response.json();
+            const box3 = document.getElementById('box3');
+            box3.textContent = `Units Sold: $${data.units_sold}K`; // Display in thousands
+        }
 
 
 
-
-   
+        // Call the function to update box 1 on page load
+        updateBox1();
+        updateBox2();
+        updateBox3();
+    </script>
 
 </body>
-
 </html>

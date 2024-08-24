@@ -7,8 +7,125 @@ body {
     background-color: #ffffff;
     /* background-color: #1e3551; */
     align-items: flex-start;
+    overflow-x: hidden;
      
  }
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav {
+    width: 550px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    left: 0px;
+}
+
+nav h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 70px;
+    line-height: 1.4;
+}
+
+nav img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+nav ul li {
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 35px;
+    font-weight: bold;
+    border-bottom: 1px solid #444;
+}
+
+nav ul li:hover {
+    background-color: #444;
+}
+
+
+
+.page {
+    display: none;
+}
+
+#page1 {
+    padding: 20px;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#box-container {
+    display: flex;
+    gap: 70px;
+    margin-left: 600px;
+    margin-top: 50px;
+    
+}
+
+.box {
+    width: 550px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 30px; /* Rounded corners */
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.active {
+    display: block;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
 
  h1 {
     text-align: center;
@@ -16,37 +133,55 @@ body {
     color: rgb(0, 0, 0);
     font-size:60px;
  }
+ footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 18px;
+}
+
+footer img {
+    margin-top: 5px;
+}
+
  
 #chartdiv
 {
-    margin-top: 50px;
-    width:100%;
-    height: 500px;
+    width:80%;
+    height: 700px;
     position: absolute;
-    top: 900px;
-    left: 0px;
+    top: 50px;
+    left: 625px;
   
 }
 
 #scatterdiv
 {
-    margin-top: 50px;
-    width:50%;
-    height: 1000px;
+    
+    width:80%;
+    height: 600px;
     position: absolute;
-    top: 1500px;
-    left:1550px;
+    top:850px;
+    left: 625px;
 }
 
 
 #newdiv
 {
-    margin-top: 50px;
-    width:50%;
-    height: 1000px;
+    width:79%;
+    height: 700px;
     position: absolute;
-    top: 1500px;
-    left: 0px;
+    top: 200px;
+    left: 625px;
   
     
 }
@@ -54,11 +189,13 @@ body {
 #profitdiv
 {
   
-    width:50%;
-    height: 700px;
+    margin-top: 50px;
+    width:79%;
+    height: 600px;
     position: absolute;
-    top:200px;
-    left:1550px;
+    top: 825px;
+    left: 625px;
+    
 
 
     
@@ -68,35 +205,85 @@ body {
 #piediv
 {
    
-    width:50%;
-    height: 700px;
+    width:78%;
+    height: 500px;
     position: absolute;
     top: 200px;
-    left: 0px;
+    left: 625px;
     
     
 }
+#productdiv
+{
+   
+    width:80%;
+    height: 700px;
+    position: absolute;
+    top: 750px;
+    left: 625px;
+    
+    
+    
+}
+#Retailerdiv
+{
+   
+    width:80%;
+    height: 760px;
+    position: absolute;
+    top:700px;
+    left: 625px;
+    
+    
+    
+}
+
 #chart-title {
     position: absolute;
-    top: 180px; /* Adjust this based on your design */
-    left: 440px;
+    top: 100px; /* Adjust this based on your design */
+    left: 1400px;
     width: 100%;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif;
   
-    font-size: 30px;
-    
+    font-size: 50px;
+    font-weight: 500;
     color: rgb(0, 0, 0); /* Adjust the color to your preference */
 }
 
 #chart-title-2 {
     position: absolute;
-    top: 1550px; /* Adjust this based on your design */
-    left: 440px;
+    top: 50px; /* Adjust this based on your design */
+    left: 1400px;
     width: 100%;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif;
   
-    font-size: 30px;
+    font-size: 50px;
+    font-weight: 500;
+    color: rgb(0, 0, 0); /* Adjust the color to your preference */
+}
+
+#chart-title-3 {
+    position: absolute;
+    top: 750px; /* Adjust this based on your design */
+    left: 1400px;
+    width: 100%;
+    font-family:Arial, Helvetica, sans-serif;
+  
+    font-size: 50px;
+    font-weight: 500;
+    color: rgb(0, 0, 0); /* Adjust the color to your preference */
+}
+#chart-title-4 {
+    position: absolute;
+    top: 650px; /* Adjust this based on your design */
+    left: 1400px;
+    width: 100%;
+    font-family:Arial, Helvetica, sans-serif;
+  
+    font-size: 50px;
+    font-weight: 500;
     
     color: rgb(0, 0, 0); /* Adjust the color to your preference */
 }
+
 

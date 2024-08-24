@@ -2,6 +2,10 @@ from flask import Flask, jsonify, render_template
 import sqlite3
 import pandas as pd
 from sqlalchemy import create_engine
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score
+from sklearn.linear_model import LinearRegression
     
 def create_connection(db_file):
     conn = None
@@ -21,21 +25,8 @@ db_url = 'sqlite:///demo.db'
 engine = create_engine(db_url, echo=False)
 df_2 = pd.read_sql('select * from Addidas', engine)
 df_3 = pd.read_sql('select [Sales Method], Retailer, [Operating Profit] from Addidas', engine)
-columns = ['Invoice Date', 'Operating Profit']
-
-data = df[columns]
-
-# Convert 'Invoice Date' to datetime
-data['Invoice Date'] = pd.to_datetime(data['Invoice Date'], format='%d/%m/%Y')
-
-# Clean and convert 'Operating Profit' to float
-data['Operating Profit'] = data['Operating Profit'].apply(lambda x: float(x.replace('$', '').replace(',', '').strip()))
-
-# Group by 'Invoice Date' and sum 'Operating Profit'
-grouped_data = data.groupby('Invoice Date')['Operating Profit'].sum().reset_index()
-
-# Convert grouped data to dictionary format
-result = grouped_data.to_dict(orient='records')
+df_line = pd.read_csv("output.csv")
+result = df_line.to_dict(orient='records')
 print(result)
 
 app = Flask(__name__)
@@ -74,21 +65,36 @@ def get_data():
             if data[j]['Method'] == df_5.loc[i]["Sales Method"]:
              data[j][df_5["Retailer"][i]] = int(df_5["Summ"][i])   
     return jsonify(data)
+@app.route('/get-retailer')
+def get_retailer():
+    df['Invoice Date'] = pd.to_datetime(df['Invoice Date'], format='%d/%m/%Y')
+
+# Convert 'Total Sales' to float
+    df['Total Sales'] = df['Total Sales'].str.replace('$', '').str.replace(',', '').astype(float)
+
+    # Add a column for the quarter and year
+    df['Year'] = df['Invoice Date'].dt.year
+    annual_sales = df.groupby(['Year', 'Retailer'])['Total Sales'].sum().reset_index()
+
+    # Pivot the data to get a matrix where rows are years and columns are retailers
+    pivot_df = annual_sales.pivot_table(index='Year', columns='Retailer', values='Total Sales', fill_value=0)
+
+    # Convert to the desired format
+    result = []
+    for year, row in pivot_df.iterrows():
+        entry = {'year': str(year)}
+        for col in pivot_df.columns:
+            entry[col] = round(row[col] / 1000, 1)  # Convert to thousands for easier reading
+        result.append(entry)
+    return jsonify(result)
+
+   
 
 '''This is the chart ofr the scatter plot '''
 @app.route('/get-line')
 def get_line():
-    columns = ['Invoice Date', 'Operating Profit']
-    data = df[columns]
-    data['Invoice Date'] = pd.to_datetime(data['Invoice Date'], format='%d/%m/%Y')
-    data['Invoice Date'] = data['Invoice Date'].astype('int64') // 10**6
-    data['Operating Profit'] = data['Operating Profit'].apply(lambda x: float(x.replace('$', '').replace(',', '').strip()))
-
-    # data.set_index('Date', inplace=True)
-    grouped_data = data.groupby('Invoice Date')['Operating Profit'].sum().reset_index()
-
-# Convert grouped data to dictionary format
-    result = grouped_data.to_dict(orient='records')
+    df_line = pd.read_csv("output.csv")
+    result = df_line.to_dict(orient='records')
 
     return jsonify(result)
 # '''This is the chart ofr the scatter plot '''
@@ -125,7 +131,28 @@ def get_line():
 
 
 #         return jsonify(data)
+@app.route('/get-product')
+def get_product():
+    top_products_per_retailer = df.loc[df.groupby('Retailer')['Total Sales'].idxmax()]
+    grouped = top_products_per_retailer.groupby(['Retailer', 'Product']).agg({'Units Sold': 'sum'}).reset_index()
+    sorted_df = grouped.sort_values(['Retailer', 'Units Sold'], ascending=[True, False])
+    grouped = top_products_per_retailer.groupby(['Retailer', 'Product']).agg({'Units Sold': 'sum'}).reset_index()
+    list_of_products = ["static\Women_Daily-removebg-preview.png", "static\Men_apparel-removebg-preview.png", "static\Women_Daily-removebg-preview.png", "static\images-removebg-preview.png", "static\Women_Daily-removebg-preview.png", "static\images-removebg-preview.png"]
+    # Sort by 'Retailer' and 'Units Sold' within each retailer
+    sorted_df = grouped.sort_values(['Retailer', 'Units Sold'], ascending=[True, False])
 
+    # Create a dictionary to map each retailer to their top product's units sold
+    top_products = []
+    i = 0
+    for retailer, group in sorted_df.groupby('Retailer'):
+        top_product = group.iloc[0]
+        top_products.append({
+            "name": retailer,
+            "value": int(top_product["Units Sold"]),
+            "bulletSettings": { "src": list_of_products[i] }  # Placeholder image URL
+        }) 
+        i+=1
+    return jsonify(top_products)
 '''Pie Chart "Dounut" To get which retailer give me the most products? '''
 @app.route('/get-pie')
 def get_pie():
@@ -207,6 +234,27 @@ def get_map():
                 c += 1
     return jsonify(data)
 
+
+# @app.route('/get-Add')
+# def get_Add():
+#     df['Total Sales'] = pd.to_numeric(df['Total Sales'].replace({'\$': '', ',': ''}, regex=True), errors='coerce')
+
+#     # Sort the DataFrame by 'Total Sales' in descending order
+#     df_sorted = df.sort_values(by='Total Sales', ascending=False)
+
+#     # Select the top 7 states
+#     top_7_states = df_sorted.head(7)
+
+#     # Format the data as a list of dictionaries
+#     data = [
+#         {"value": row['Total Sales'], "category": row['State']}
+#         for _, row in top_7_states.iterrows()
+#     ]
+    
+#     # Return the data as a JSON response
+#     return jsonify(data)
+
+#     return data
 '''This is the stacked bar that give me information about the region with the highest profit in each region with each sales method'''
 @app.route('/get-profit')
 def get_profit():
@@ -236,6 +284,36 @@ def get_profit():
    
   
     return jsonify(data)
+@app.route('/get-total-sales')
+def get_total_sales():
+    query = '''
+    SELECT SUM(CAST(REPLACE(REPLACE([Total Sales], '$', ''), ',', '') AS FLOAT)) AS TotalSales
+    FROM Addidas
+    '''
+    df_total_sales = pd.read_sql(query, engine)
+    total_sales = df_total_sales['TotalSales'][0]
+    return jsonify({"total_sales": round(total_sales / 1000, 2)})  # Return in thousands, rounded to 2 decimal places
+@app.route('/get-operating-profit')
+def get_operating_profit():
+    query = '''
+    SELECT SUM(CAST(REPLACE(REPLACE([Operating Profit], '$', ''), ',', '') AS FLOAT)) AS OperatingProfit
+    FROM Addidas
+    '''
+    df_operating_profit = pd.read_sql(query, engine)
+    operating_profit = df_operating_profit['OperatingProfit'][0]
+    return jsonify({"operating_profit": round(operating_profit / 1000, 2)})  # Return in thousands, rounded to 2 decimal places
+
+@app.route('/get-units-sold')
+def get_units_sold():
+    query = '''
+    SELECT SUM(CAST(REPLACE(REPLACE([Units Sold], '$', ''), ',', '') AS FLOAT)) AS UnitsSold
+    FROM Addidas
+    '''
+    df_units_sold = pd.read_sql(query, engine)
+    units_sold = df_units_sold['UnitsSold'][0]
+    return jsonify({"units_sold": units_sold})  # Return in thousands, rounded to 2 decimal places
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

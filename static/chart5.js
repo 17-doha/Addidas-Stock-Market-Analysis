@@ -157,15 +157,15 @@ function updateProfit(data_profit)
         
       legend.labels.template.set("fill", am5.color("#000000"));
       var titleLabel = am5.Label.new(root, {
-        text: "The Highest Profit Sales Method in Each Region",
-        fontSize: 30,
+        text: "The Highest Sales in Each Sales Method in Each Region",
+        fontSize: 50,
         fontWeight: "500",
         marginBottom: 100,
         
-        centerX: am5.percent(-50),
-        centerY: am5.percent(15),
+        centerX: am5.percent(-35),
+        centerY: am5.percent(-95),
   
-        fontFamily: "Courier New, Courier, monospace",
+        fontFamily: "Arial, Helvetica, sans-serif",
         fill: am5.color("#000000") 
       });
   
