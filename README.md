@@ -1,12 +1,11 @@
 Name
 =======
-**Addidas Stock Market Dashboard**
+**Addidas US Stock Market Analysis in 2020 - 2021**
 
 Description
 =======
 This dashboard is addressed to answer some main questions to take important decisions related to the dataset provided by Addidas.  
 
-**Provider:** Addidas Multinational Company  
 
 **Input** **Data:** Retailer, Retailer ID, Invoice Date, Region, State, City, Product, Price per Unit, Units Sold, Total Sales, Operating Profit, Operating Margin, Sales Method  
 
@@ -20,53 +19,62 @@ This dashboard is addressed to answer some main questions to take important deci
  * CSS
 
 **Questions** **Answered** **By** **This** **Dashboard:**  
- * Our main 3 windows for sales are In-store, Online, and Outlet in which region do we need to increase our branches?  
- * In which region do we need to increase our online services?  
- * In which state can we increase our branches? In other words in which states do we make the highest sales?  
- * In which state do we make the most profit?  
- * Which branch can we close down as it makes the lowest profit?  
- * Who is our greatest retailer?  
- * Which retailers provide us with the highest profit?  
- * Who is the top retailer relative to the profit in each sales method?  
+* How do our financial and sales metrics look?
+* What are our top-selling products?
+* Which retailer has the highest customer purchase volume?
+* Which sales method yields the highest revenue in each region?
+* What are the current profit trends and future predictions?
+* Which retailer generates the highest sales?
+* Which country reports the highest sales in the US? 
 
 
 Dashboard Details
 =======
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/f9180526-d9ea-44ae-bdd0-ec04368bfb69)
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/51dd0fd1-58b9-4300-b395-f14a2f27c2f8)  
 
 
-**All Retailers of Addidas**  
- * Who is our greatest retailer in all regions?  
-
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/3a23caca-6b6f-4e25-b23a-ee7e097d5aaa) 
+https://github.com/user-attachments/assets/5265b5f9-40f4-4f00-a527-9204a5082162
 
 
-**The Most Popular Sales Method in Each Region** 
- * Our main 3 windows for sales are In-store, Online, and Outlet in which region do we need to increase our branches?  
- * In which region do we need to increase our online services?  
-
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/ccde8a0c-d189-4c6a-8c48-307e81bdc5e4)  
 
 
-**Profit of Each Retailer for Each Sales Method**  
-  * Which retailers provide us with the highest profit?  
-  * Who is the top retailer relative to the profit in each sales method?
-     
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/b63a7151-2fba-4398-95c6-06701f486f84)
-
-**Total Sales in Each Region in US** 
-  * In which state can we increase our branches? In other words in which states do we make the highest sales?  
-  * In which state do we make the most profit?
-    
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/1bfbffd1-9a28-4131-8bab-f937f1f57a89)
+**Products Dashboard**  
+ * How do our financial and sales metrics look?
+ * What are our top-selling products?
 
 
-**Sales - Profit Graph** 
-  * In which state do we make the most profit?
-  * Which branch can we close down as it makes the lowest profit?
 
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/a48d681e-2692-4b14-a1aa-7a22c298a8b0)
+https://github.com/user-attachments/assets/c3552e2b-54b8-4fec-9afd-7c6db209f788
+
+
+
+
+**Retailers Dashboard** 
+* Which retailer has the highest customer purchase volume?
+* Which sales method yields the highest revenue in each region?
+
+
+
+https://github.com/user-attachments/assets/66cd987d-c84f-414c-b102-37401c671476
+
+
+
+
+**Profits Dashboard**  
+* What are the current profit trends and future predictions?
+
+
+
+https://github.com/user-attachments/assets/45d97365-3323-46b5-973f-b04dc2edf608
+
+
+**Sales Dashboard** 
+* Which retailer generates the highest sales?
+* Which country reports the highest sales in the US? 
+
+
+
+https://github.com/user-attachments/assets/b48561ff-5c51-44d9-b746-620d852019c3
+
 
 For the source code contact at --**s-doha.hassanien@zewailcity.edu.eg**--
 
