@@ -76,10 +76,5 @@ https://github.com/user-attachments/assets/45d97365-3323-46b5-973f-b04dc2edf608
 https://github.com/user-attachments/assets/b48561ff-5c51-44d9-b746-620d852019c3
 
 
-
-
-
-![image](https://github.com/17-doha/Addidas-Stock-Market-Dashboard/assets/65771031/a48d681e-2692-4b14-a1aa-7a22c298a8b0)
-
 For the source code contact at --**s-doha.hassanien@zewailcity.edu.eg**--
 
